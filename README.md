@@ -1,7 +1,6 @@
-## Primeiros Exercícios
+# Primeiros Exercícios
 
-Exercícios
-API de Preços de Ações
+### API de Preços de Ações
 Crie uma API que mantém uma lista dos preços de fechamento de várias ações ao longo dos dias. Utilize dicionários, em que as chaves representam o código da ação e os valores são listas de tuplas contendo a data e o preço de fechamento. Implemente os seguintes métodos:
 
 ```add(code, date, closing_price)```: adiciona informações de preço de fechamento para uma ação específica em uma determinada data. Certifique-se de lidar com casos em que a ação ainda não possui uma entrada no dicionário, usando defaultdict.
@@ -16,7 +15,7 @@ Crie uma API que mantém uma lista dos preços de fechamento de várias ações 
 
 #
 
-Dicionário de definição de palavras
+###  Dicionário de definição de palavras
 Melhore a solução proposta para o problema do dicionário de palavras definido anteriormente. Crie uma API com os seguintes métodos:
 
 ```set(word, definition)```: Adiciona ou modifica a definição de uma palavra.
@@ -29,7 +28,7 @@ Melhore a solução proposta para o problema do dicionário de palavras definido
 
 #
 
-Sistema de eleições
+### Sistema de eleições
 Crie um programa para gerenciar uma eleição. Primeiramente, será necessário cadastrar os candidatos e associá-los às suas respectivas chapas. Em seguida, o programa deverá ler a lista de votos, onde cada voto é representado pelo número da chapa do candidato votado.
 
 Primeiramente o programa lê a quantidade de candidatos, seguida pelo número da chapa e o nome (única palavra, sem espaços) de cada candidato. Depois o programa lê a quantidade de votos, seguida pelos números das chapas votadas. Caso haja algum número sem chapa cadastrada, considerar como voto nulo. Por fim, o programa deve exibir os dois candidatos mais votados, e a mensagem "SEM SEGUNDO TURNO" ou "COM SEGUNDO TURNO", caso o primeiro candidato tenha conseguido mais de 50% dos votos ou não. Caso haja empate, o critério de desempate é a ordem alfabética. A entrada e saída de dados deve obedecer ao seguinte padrão de exemplo:
