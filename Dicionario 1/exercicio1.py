@@ -17,7 +17,6 @@ def get_prices(code):
   return [(add.data, add.preco_final) for add in add_dict[code]]
 
 def average_price(code):
-  #prices = [add.preco_final for add in add_dict.values() for add in add if add.code == code]
   return sum([add.preco_final for add in add_dict[code]])/len([add.preco_final for add in add_dict[code]])
 
 def get_all_stocks():
@@ -38,7 +37,7 @@ add(2, date(2021, 4, 1), 150.0)
 add(3, date(2020, 7, 1), 175.0)
 
 prices_for_code_1 = get_prices(1)
-print(f"Precos e datas do codigo 1: {prices_for_code_1}") # print(prices_for_code_1)
+print(f"Precos e datas do codigo 1: {prices_for_code_1}")
 
 all_stocks = get_all_stocks()
 print(f"Todos os codigos: {all_stocks}")

@@ -18,8 +18,8 @@ def get(candidato):
 
 def cadastrar_voto(chapa):
   if chapa is not None:
-    for candidato, eleicoes in add_dict.items():
-      for entry in eleicoes:
+    for indice, candidato in add_dict.items():
+      for entry in candidato:
         if entry.chapa == chapa:
           entry.voto += 1
           print("Voto cadastrado")
@@ -28,11 +28,11 @@ def cadastrar_voto(chapa):
     print("Chapa não encontrada")
 
 def get_all_votos():
-  votos = [entry.voto for eleicoes in add_dict.values() for entry in eleicoes]
+  votos = [entry.voto for candidato in add_dict.values() for entry in candidato]
   return votos
 
 def get_all_candidatos():
-  candidato = [(entry.candidato, entry.chapa) for eleicoes in add_dict.values() for entry in eleicoes]
+  candidato = [(entry.candidato, entry.chapa) for candidato in add_dict.values() for entry in candidato]
   return candidato
 
 def verificar_empate(mais_votado):

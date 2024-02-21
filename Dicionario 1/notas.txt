@@ -1,0 +1,101 @@
+### Anotações
+
+```
+def get_votos(candidato):
+  votos = sum(entry.voto for entry in add_dict[candidato])
+  return votos
+```
+
+```
+  total_votos = len(votos)  # Obtém o total de votos
+  votos_candidato = Counter(votos).get(candidato_vencedor, 0)  # Obtém os votos do candidato vencedor
+
+  if total_votos > 0 and (votos_candidato / total_votos) > 0.5:
+    print(f"O candidato {candidato_vencedor} teve mais de 50% dos votos.")
+  else:
+    print(f"O candidato {candidato_vencedor} não teve mais de 50% dos votos.")
+```
+
+
+Aviso de função muito extensa:
+
+```
+
+def calcular_votos():
+  votos = get_all_votos()
+  total_votos = len(votos) 
+  
+  if total_votos > 0:
+    mais_votado = Counter(votos).most_common(1)[0][0]
+    contagem_mais_votado = Counter(votos)[mais_votado]
+
+    # Verifica se houve empate
+    empate = contagem_mais_votado > 1
+
+    if not empate:
+      for candidato, eleicoes in add_dict.items():
+        for entry in eleicoes:
+          if entry.voto == mais_votado:
+            print(f"O candidato {candidato} teve mais de 50% dos votos.")
+          return
+    else:
+      # Empate, determina o vencedor por ordem alfabética
+      candidatos_em_empate = [candidato for candidato, eleicoes in add_dict.items() if any(entry.voto == mais_votado for entry in eleicoes)]
+      vencedor_empate = min(candidatos_em_empate)  # Obtém o candidato vencedor por ordem alfabética
+      print(f"Empate! O candidato vencedor por ordem alfabética é {vencedor_empate}.")
+```
+
+
+```
+prices = [add.preco_final for add in add_dict.values() for add in add if add.code == code]
+```
+
+
+UAU VEI
+
+
+import os
+from collections import Counter
+
+add_dict = {}
+
+def set(candidato, chapa, votos):
+  if candidato not in add_dict:
+    add_dict[candidato] = [{"candidato": candidato, "chapa": chapa, "voto": votos}]
+  else:
+    add_dict[candidato].append({"candidato": candidato, "chapa": chapa, "voto": votos})
+
+def cadastrar_voto(chapa):
+  for indice, candidato in add_dict.items():
+    for entry in candidato:
+      if entry["chapa"] == chapa:
+        entry["voto"] += 1
+        print("Voto cadastrado")
+        return
+      else:
+        print("Chapa não encontrada")
+
+def get_all_votos():
+  votos = [entry["voto"] for candidato in add_dict.values() for entry in candidato]
+  return votos
+
+def get_all_candidatos():
+  candidato = [(entry["candidato"], entry["chapa"]) for candidato in add_dict.values() for entry in candidato]
+  return candidato
+
+def verificar_empate(mais_votado):
+  candidatos_em_empate = [candidato for candidato, eleicoes in add_dict.items() if any(entry["voto"] == mais_votado[1] for entry in eleicoes)]
+  vencedor_empate = min(candidatos_em_empate)
+  print(f"Empate! O candidato vencedor por ordem alfabética é {vencedor_empate}.")
+
+def realizar_segundo_turno(candidatos_em_segundo_turno):
+  print("SEGUNDO TURNO!")
+  print("Candidatos no segundo turno:")
+  for candidato in candidatos_em_segundo_turno:
+    print(candidato)
+
+def calcular_votos():
+  votos = list(get_all_votos())
+  total_votos = len(votos)
+
+  if total_votos == 0:
