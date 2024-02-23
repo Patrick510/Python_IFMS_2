@@ -30,7 +30,6 @@ def cadastrar_voto(chapa):
             else:
                 total_votos += 1
 
-
 def verificar_empate(candidatos_empate):
     vencedor_empate = min(candidatos_empate)
     print(f"EMPATE! O DESEMPATE SERA FEITO POR ORDEM ALFABETICA \nO vencedor foi {vencedor_empate}")
@@ -43,7 +42,7 @@ def verificar_segundo_turno(candidatos_turno):
 def calcular_voto():
     global total_votos
     votos = get_votos()
-    
+
     if total_votos == 0:
         print("Não houve votos")
 
@@ -82,10 +81,10 @@ try:
         voto = 0
 
         set(nome, chapa, voto)
-    
+
     while True:
         entry = input("[S] <- Sair:")
-        
+
         if entry != "S":
             voto_chapa = int(entry)
             cadastrar_voto(voto_chapa)
@@ -96,4 +95,3 @@ try:
 
 except(ValueError, TypeError):
     print("Valores inválidos")
-

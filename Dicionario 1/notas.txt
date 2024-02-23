@@ -117,6 +117,10 @@ calcular_voto()
 
         # print(f"CONTAGEM VOTOS {contagem_votos}") CONTAGEM VOTOS [('Sicrano', 2), ('Fulano', 1)]
 
+
+
+    total_votos += sum(entry.voto + 1 if entry.chapa == chapa else 1 for candidato in add_dict.values() for entry in candidato)
+
 UAU VEI
 
 
