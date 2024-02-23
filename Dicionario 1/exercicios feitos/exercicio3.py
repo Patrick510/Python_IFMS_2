@@ -6,7 +6,7 @@ import os
 class Eleicao:
     candidato: str
     chapa: int
-    voto: int  # Remova o valor padrão 0
+    voto: int 
 
 add_dict = defaultdict(list)
 total_votos = 0
@@ -18,7 +18,7 @@ def get():
     return [(entry.candidato, entry.chapa, entry.voto) for entries in add_dict.values() for entry in entries]
 
 def get_votos():
-    return [( entry.candidato, entry.voto) for entries in add_dict.values() for entry in entries]
+    return [(entry.candidato, entry.voto) for entries in add_dict.values() for entry in entries]
 
 def cadastrar_voto(chapa):
     global total_votos

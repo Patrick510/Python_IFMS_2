@@ -22,7 +22,7 @@ def get_word_order(word):
     return word_order.index(word) + 1
   else:
     return None
-  
+
 def get_all_words():
   return word_order
 
