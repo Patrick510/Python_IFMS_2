@@ -4,107 +4,96 @@ import os
 
 @dataclass
 class Eleicao:
-  candidato: str
-  chapa: int
-  voto: int
+    candidato: str
+    chapa: int
+    voto: int  # Remova o valor padrão 0
 
 add_dict = defaultdict(list)
+total_votos = 0
 
-def set(candidato,chapa, voto):
-  add_dict[candidato].append(Eleicao(candidato, chapa, voto))
+def set(candidato, chapa, voto):
+    add_dict[candidato].append(Eleicao(candidato, chapa, voto))
 
-def get(candidato):
-  return [(entry.candidato, entry.chapa, entry.voto) for entry in add_dict[candidato]]
+def get():
+    return [(entry.candidato, entry.chapa, entry.voto) for entries in add_dict.values() for entry in entries]
+
+def get_votos():
+    return [( entry.candidato, entry.voto) for entries in add_dict.values() for entry in entries]
 
 def cadastrar_voto(chapa):
-  if chapa is not None:
-    for indice, candidato in add_dict.items():
-      for entry in candidato:
-        if entry.chapa == chapa:
-          entry.voto += 1
-          print("Voto cadastrado")
-          return
-  else:
-    print("Chapa não encontrada")
+    global total_votos
+    for candidato in add_dict.values():
+        for entry in candidato:
+            if entry.chapa == chapa:
+                entry.voto += 1
+                total_votos += 1
+            else:
+                total_votos += 1
 
-def get_all_votos():
-  votos = [entry.voto for candidato in add_dict.values() for entry in candidato]
-  return votos
 
-def get_all_candidatos():
-  candidato = [(entry.candidato, entry.chapa) for candidato in add_dict.values() for entry in candidato]
-  return candidato
+def verificar_empate(candidatos_empate):
+    vencedor_empate = min(candidatos_empate)
+    print(f"EMPATE! O DESEMPATE SERA FEITO POR ORDEM ALFABETICA \nO vencedor foi {vencedor_empate}")
 
-def verificar_empate(mais_votado):
-  candidatos_em_empate = [candidato for candidato, eleicoes in add_dict.items() if any(entry.voto ==mais_votado for entry in eleicoes)]
-  vencedor_empate = min(candidatos_em_empate)
-  print(f"Empate! O candidato vencedor por ordem alfabética é {vencedor_empate}.")
+def verificar_segundo_turno(candidatos_turno):
+    for candidatos in candidatos_turno:
+        print(candidatos)
+    print("SEGUNDO TURNO")
 
-def realizar_segundo_turno(candidatos_em_segundo_turno):
-  print("SEGUNDO TURNO!")
-  print("Candidatos no segundo turno:")
-  for candidato in candidatos_em_segundo_turno:
-    print(candidato)
+def calcular_voto():
+    global total_votos
+    votos = get_votos()
+    
+    if total_votos == 0:
+        print("Não houve votos")
 
-def calcular_votos():
-  votos = get_all_votos()
-  total_votos = len(votos)
+    contagem_votos = Counter({candidato: voto for candidato, voto in votos}).most_common(2)
 
-  if total_votos == 0:
-    print("Não houve votos ainda.")
-    return
+    if len(contagem_votos) == 1:
+        candidato, qtd_votos = contagem_votos[0]
+        percent_mais_votado = qtd_votos / total_votos
 
-  mais_votado, segundo_mais_votado = Counter(votos).most_common(2)
+        if percent_mais_votado > 0.5:
+            print(f"O único candidato, {candidato} ganhou com mais de 50% dos votos")
+        else:
+            print(f"O único candidato, {candidato} perdeu com menos de 50% dos votos")
+    elif len(contagem_votos) > 1:
+        mais_votado, qtd_votos = contagem_votos[0]
+        segundo_mais_votado, qtd_votos_2 = contagem_votos[1]
+        percent_mais_votado = qtd_votos / total_votos
 
-  percentual_mais_votado = mais_votado[1] / total_votos
+        if qtd_votos == qtd_votos_2:
+            candidatos_em_empate = (mais_votado, segundo_mais_votado)
+            verificar_empate(candidatos_em_empate)
+        elif percent_mais_votado > 0.5:
+            print(f"O candidato {mais_votado} ganhou com mais de 50% dos votos")
+        else:
+            candidatos_segundo_turno = (mais_votado, segundo_mais_votado)
+            verificar_segundo_turno(candidatos_segundo_turno)
+    else:
+        print("Algo deu errado")
 
-  if percentual_mais_votado >= 0.5:
-    vencedor = mais_votado[0]
-    print(f"O candidato {vencedor} teve mais de 50% dos votos.")
-  elif percentual_mais_votado < 0.5:
-    candidatos_em_segundo_turno = [mais_votado[0], segundo_mais_votado[0]]
-    realizar_segundo_turno(candidatos_em_segundo_turno)
-  else:
-    verificar_empate(mais_votado)
+try:
+    numero_candidatos = int(input(":"))
 
-set("Fulano", 14, 0)
-set("Beltrano", 20, 0)
-set("Cicrano", 42, 0)
+    for entry in range(numero_candidatos):
+        chapa = int(input(":"))
+        nome = str(input(":"))
+        voto = 0
 
-cadastrar_voto(3)
-cadastrar_voto(14)
-cadastrar_voto(42)
-cadastrar_voto(20)
-cadastrar_voto(5)
-cadastrar_voto(20)
-cadastrar_voto(14)
-cadastrar_voto(0)
-cadastrar_voto(42)
-cadastrar_voto(20)
+        set(nome, chapa, voto)
+    
+    while True:
+        entry = input("[S] <- Sair:")
+        
+        if entry != "S":
+            voto_chapa = int(entry)
+            cadastrar_voto(voto_chapa)
+        else:
+            os.system("cls")
+            calcular_voto()
+            break
 
-votos = list(get_all_votos())
-candidato1 = get("Fulano")
-print(candidato1)
+except(ValueError, TypeError):
+    print("Valores inválidos")
 
-print("")
-print(votos)
-
-calcular_votos()
-print(votos)
-
-# entry = "S"
-# while entry == "S":
-#   print("Nome / Chapa")
-#   print(get_all_candidatos())
-  
-#   print("\n Qual seu voto? \n")
-#   cadastrar_voto(input(":"))
-
-#   entry = input("\n Terminou? [S]Sim [N]Não \n:").upper()
-#   os.system("cls")
-
-#   if entry == "N":
-#     calcular_votos()
-#     break
-#   else:
-#     calcular_votos()

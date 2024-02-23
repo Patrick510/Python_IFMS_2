@@ -34,7 +34,7 @@ def get_all_candidatos_():
   return candidatos
 
 def verificar_empate(mais_votado):
-  candidatos_em_empate = [candidato for candidato, eleicoes in add_dict.items() if any(entry["voto"] == mais_votado[1] for entry in eleicoes)]
+  candidatos_em_empate = [candidato for candidato, eleicoes in add_dict.items() if any(entry["votos"] == mais_votado[1] for entry in eleicoes)]
   vencedor_empate = min(candidatos_em_empate)
   print(f"Empate! O candidato vencedor por ordem alfabética é {vencedor_empate}.")
 
@@ -89,16 +89,13 @@ try:
     set(nome_cand, chapa_cand, voto)
 
   while True:
-      try:
-        print(get_all_candidatos())
-        voto = input("(PARA SAIR DIGITE [S])\nQual seu voto\n:")
-        if voto.lower() == 's':
-          calcular_votos()
-          break
-        print(voto)
-        voto = int(voto)
-        cadastrar_voto(voto)
-      except ValueError:
-        print("Por favor, insira um número válido para o voto.")
+      print(get_all_candidatos())
+      voto = input("(PARA SAIR DIGITE [S])\nQual seu voto\n:")
+      if voto.upper() == 'S':
+        calcular_votos()
+        break
+      print(voto)
+      voto = int(voto)
+      cadastrar_voto(voto)
 except (TypeError, ValueError):
   print("Valor inválido, digite apenas números")

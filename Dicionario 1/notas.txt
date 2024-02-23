@@ -50,6 +50,72 @@ def calcular_votos():
 prices = [add.preco_final for add in add_dict.values() for add in add if add.code == code]
 ```
 
+Meio confuso
+```
+    # for indice, candidato in add_dict.items():
+    #   for entry in candidato:
+    #     if entry.chapa == chapa:
+    #       entry.voto += 1
+    #       print("Voto cadastrado")
+    #       return
+```
+
+set("Fulano", 14, 0)
+set("Beltrano", 42, 0)
+print(get())
+cadastrar_voto(14)
+cadastrar_voto(1)
+cadastrar_voto(0)
+cadastrar_voto(4)
+cadastrar_voto(42)
+cadastrar_voto(42)
+cadastrar_voto(42)
+print(get())
+
+calcular_voto()
+
+
+try:
+    numero_candidatos = int(input(":"))
+
+    for entry in range(numero_candidatos):
+        chapa = int(input(":"))
+        nome = str(input(":"))
+        voto = 0
+
+        set(nome, chapa, voto)
+    
+    while True:
+        entry = input("[S] <- Sair:")
+        
+        if entry != "S":
+            voto_chapa = int(entry)
+            cadastrar_voto(voto_chapa)
+            print(get())
+        else:
+            print(get())
+            calcular_voto()
+            break
+
+except(ValueError, TypeError):
+    print("Valores inválidos")
+
+set("Fulano", 14, 0)
+set("Beltrano", 42, 0)
+set("Sicrano", 20, 0)
+print(f"CANDIDATOS: {get()}")
+cadastrar_voto(5)
+cadastrar_voto(20)
+cadastrar_voto(0)
+cadastrar_voto(4)
+cadastrar_voto(42)
+cadastrar_voto(20)
+print(f"CANDIDATOS: {get()}")
+
+calcular_voto()
+
+
+        # print(f"CONTAGEM VOTOS {contagem_votos}") CONTAGEM VOTOS [('Sicrano', 2), ('Fulano', 1)]
 
 UAU VEI
 
@@ -99,3 +165,45 @@ def calcular_votos():
   total_votos = len(votos)
 
   if total_votos == 0:
+
+
+
+
+
+  VEI
+
+      # Contagem manual dos votos
+    # votos_count = {}
+    # for voto in votos:
+    #     candidato, voto = voto
+    #     if candidato in votos_count:
+    #         votos_count[candidato] += voto
+    #     else:
+    #         votos_count[candidato] = voto
+    
+    # print(votos_count)
+    # # Ordenação dos candidatos pelo número de votos
+    # contagem_votos = sorted(votos_count.items(), key=lambda x: x[1], reverse=True)[:2]
+
+    votos_count = Counter({candidato: voto for candidato, voto in votos}).most_common(2)
+
+    # Ordena os candidatos pelo número de votos
+    #contagem_votos = votos_count.most_common(2)
+
+
+          # print(mais_votado) Sicrano
+        # print(qtd_votos) 2
+        # print(segundo_mais_votado) Beltrano
+        # print(qtd_votos_2) 1
+
+    set("Fulano", 14, 0)
+set("Beltrano", 42, 0)
+set("Sicrano", 20, 0)
+print(f"CANDIDATOS: {get()}")
+cadastrar_voto(5)
+cadastrar_voto(20)
+cadastrar_voto(0)
+cadastrar_voto(4)
+cadastrar_voto(42)
+cadastrar_voto(20)
+print(f"CANDIDATOS: {get()}")
