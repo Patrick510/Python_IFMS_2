@@ -32,7 +32,7 @@ add("Google", date(2016,4,4), 189.0)
 add("Netflix", date(2019,7,3), 180.0)
 
 # print(get_prices("Google"))
-# print(get_all_stocks())
+print(get_all_stocks())
 mediaGoogle = average_prices("Google")
 print(f"{mediaGoogle:.2f}")
 print(recent_prices("Google",date(2016,4,4)))

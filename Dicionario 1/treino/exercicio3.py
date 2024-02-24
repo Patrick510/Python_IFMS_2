@@ -84,3 +84,28 @@ eleicao_.cadastrar_voto(42)
 eleicao_.cadastrar_voto(20)
 
 eleicao_.calcular_voto()
+
+try:
+  entrada = int(input(":"))
+  
+  eleicao_instance = Eleicao('', 0, 0)
+  
+  for entry in range(entrada):
+    chapa = int(input(":"))
+    nome = str(input(":"))
+    
+    eleicao_instance.add_candidato(nome,chapa,0)
+  
+  while True:
+    voto_entry = input("[S]Sair:")
+    
+    if voto_entry != "S":
+      voto = int(voto_entry)
+      eleicao_instance.cadastrar_voto(voto)
+    else:
+      print(eleicao_instance.get())
+      eleicao_instance.calcular_voto()
+      break
+  
+except (ValueError,TypeError):
+  print("Valores inválidos")

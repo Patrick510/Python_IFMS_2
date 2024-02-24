@@ -72,26 +72,26 @@ def calcular_voto():
     else:
         print("Algo deu errado")
 
-try:
-    numero_candidatos = int(input(":"))
+# try:
+#     numero_candidatos = int(input(":"))
 
-    for entry in range(numero_candidatos):
-        chapa = int(input(":"))
-        nome = str(input(":"))
-        voto = 0
+#     for entry in range(numero_candidatos):
+#         chapa = int(input(":"))
+#         nome = str(input(":"))
+#         voto = 0
 
-        set(nome, chapa, voto)
+#         set(nome, chapa, voto)
 
-    while True:
-        entry = input("[S] <- Sair:")
+#     while True:
+#         entry = input("[S] <- Sair:")
 
-        if entry != "S":
-            voto_chapa = int(entry)
-            cadastrar_voto(voto_chapa)
-        else:
-            os.system("cls")
-            calcular_voto()
-            break
+#         if entry != "S":
+#             voto_chapa = int(entry)
+#             cadastrar_voto(voto_chapa)
+#         else:
+#             os.system("cls")
+#             calcular_voto()
+#             break
 
-except(ValueError, TypeError):
-    print("Valores inválidos")
+# except(ValueError, TypeError):
+#     print("Valores inválidos")
