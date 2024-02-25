@@ -9,6 +9,7 @@ class Dicionario:
 add_dict = defaultdict(list)
 word_order = []
 
+
 def set(word, definition):
   add_dict[word].append(Dicionario(word,definition))
   if word not in word_order:
