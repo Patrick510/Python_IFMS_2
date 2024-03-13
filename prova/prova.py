@@ -23,12 +23,11 @@ def consultar_livros_por_autor(autor):
     return [entry.titulo for entry in livro_bd.values() if entry.autor == autor]
 
 def livros_publicados_no_ano(ano):
-    return [entry.titulo for entry in livro_bd.values() if entry.ano >= ano]
+    return [entry.titulo for entry in livro_bd.values() if entry.ano == ano]
 
 def calcular_media_paginas():
     total_paginas = sum(entry.numero_paginas for entry in livro_bd.values() if entry is not None)
-    total_livros = sum(1 for entry in livro_bd.values() if entry is not None)
-    return total_paginas / total_livros
+    return total_paginas / len(livro_bd)
 
 def livros_maiores_que(numero_paginas):
     livros_maior_que = []
