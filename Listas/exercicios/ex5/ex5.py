@@ -1,0 +1,1 @@
+"""Ler dois arquivos de texto diferentes. Escrever as palavras presentes em pelo menos um dos arquivos, sem duplicatas."""
