@@ -57,7 +57,7 @@ print(tuple2)
 
 
 new_list = ["NewItem1", "NewItem2", "NewItem3"]
-tuple2.append(tuple(new_list))
+tuple2.append(new_list)
 print("Após adicionar a lista como nova sub-tupla")
 print(tuple2)
 

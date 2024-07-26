@@ -40,6 +40,7 @@ def books_more_then(number_page):
 
 add_book("Python for Beginners", "John Smith", 2020, 380)
 add_book("Artificial Intelligence in Practice", "Alice Williams", 2020, 380)
+add_book("Artificial Intelligence in Practice 2", "Alice Williams", 2021, 380)
 remove_book("Python for Beginners", "John Smith")
 print(search_book_autor("John Smith"))
 print(books_published_year(2020))
