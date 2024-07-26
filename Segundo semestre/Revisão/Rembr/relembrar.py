@@ -62,3 +62,17 @@ print("Após adicionar a lista como nova sub-tupla")
 print(tuple2)
 
 
+def ler_documento(caminho):
+  with open(caminho, "r") as arquivo:
+    return arquivo.read()
+
+def escrever_documento(caminho):
+  with open(caminho, "w") as arquivo:
+    arquivo.write("Tem coisa agora")
+
+caminho = input()
+conteudo = ler_documento(caminho)
+# conteudo = escrever_documento(caminho)
+# print(conteudo)
+
+
