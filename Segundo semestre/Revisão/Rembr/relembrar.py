@@ -70,9 +70,13 @@ def escrever_documento(caminho):
   with open(caminho, "w") as arquivo:
     arquivo.write("Tem coisa agora")
 
-caminho = input()
-conteudo = ler_documento(caminho)
+# caminho = input()
+# conteudo = ler_documento(caminho)
 # conteudo = escrever_documento(caminho)
 # print(conteudo)
 
-
+lista = [1,7,3,5]
+frase = "ONTEM EU FUI NA FEIRA"
+conjunto = set(lista)
+conjunto_frase = set(frase)
+print(conjunto)
