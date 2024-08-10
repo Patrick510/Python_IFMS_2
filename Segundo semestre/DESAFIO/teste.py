@@ -1,26 +1,27 @@
 def ler_arquivo(caminho, valores):
-    with open(caminho, "r+") as arquivo:
-        conteudo = arquivo.read()
-        valor_total = 0
+  with open(caminho, "r+") as arquivo:
+    conteudo = arquivo.read()
+    valor_total = 0
 
-        for letra in list(conteudo):
-            if letra != " " and letra != "\n":
-                if letra in valores:
-                    valor_total += valores[letra]
-    return valor_total
+    for letra in list(conteudo):
+        if letra in valores:
+          valor_total += valores[letra]
+    return round(valor_total, 2)
 
-k = int(input("Número de letras e valores: "))
+k = int(input())
 arquivos = []
 valores = {}
 
 for count in range(k):
-    letra, valor = map(str, input("Letra e valor (separados por espaço): ").split())
-    valores[letra] = int(valor) / 100 
+  letra, valor = map(str ,input().split())
+  valores[letra] = int(valor)/100 
 
-m = int(input("Número de arquivos: "))
+m = int(input())
 
 for count in range(m):
-    arquivo = input("Nome do arquivo: ")
-    arquivos.append(arquivo)
+  arquivo = input()
+  arquivos.append(arquivo)
 
-print(ler_arquivo(arquivos[0], valores))
+for count in range(len(arquivos)):
+    print(f"R$ {ler_arquivo(arquivos[count], valores)}")
+
