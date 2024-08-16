@@ -114,8 +114,23 @@ def ex15():
   if extrair_vogal(s1) == extrair_vogal(s2):
     print("Sim")
 
-# 1 - Dadas duas strings, quantas vezes uma está contida na outra? Exemplo, "ANA" ocorre 4 vezes em "ANA E MARIANA GOSTAM DE BANANA"
+# 16 - Dadas duas strings, quantas vezes uma está contida na outra? Exemplo, "ANA" ocorre 4 vezes em "ANA E MARIANA GOSTAM DE BANANA"
+def ex16():
+  s1 = input()
+  s2 = input()
+  
+  def contando_ocorrencias(sub, s):
+    count = start = 0
+    while True:
+      start = s.find(sub, start)
+      if start == -1:
+        return count
+      count += 1
+      start += 1
+  print(contando_ocorrencias(s1,s2))
 
-# 1 - Um palíndromo é uma sequência de caracteres que se lê da mesma forma que de trás para frente, como ARARA, REVIVER ou OGALOAMAOLAGO. Dada uma string, ela é palíndroma?.
+# 17 - Um palíndromo é uma sequência de caracteres que se lê da mesma forma que de trás para frente, como ARARA, REVIVER ou OGALOAMAOLAGO. Dada uma string, ela é palíndroma?.
+def ex17():
+  pass
 
 # 1 - A Cifra de César é uma das técnicas de criptografia mais simples e conhecidas. Ela consiste em substituir cada letra de um texto pela n-ésima letra do alfabeto após ela, sendo n um número inteiro, chamado de chave de encriptação. Por exemplo, para n=5, o texto "Rex" se torna "Wjc". Dada a chave e o texto, qual o texto encriptado?
