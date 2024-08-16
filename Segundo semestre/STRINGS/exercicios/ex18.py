@@ -1,7 +1,7 @@
 # A Cifra de César é uma das técnicas de criptografia mais simples e conhecidas. Ela consiste em substituir cada letra de um texto pela n-ésima letra do alfabeto após ela, sendo n um número inteiro, chamado de chave de encriptação. Por exemplo, para n=5, o texto "Rex" se torna "Wjc". Dada a chave e o texto, qual o texto encriptado?
 
 alfabeto_minus = "abcdefghijklmnopqrstuvwxyz"
-alfabeto_maius = "abcdefghijklmnopqrstuvwxyz"
+alfabeto_maius = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 texto = str(input())
 chave = int(input())
 
