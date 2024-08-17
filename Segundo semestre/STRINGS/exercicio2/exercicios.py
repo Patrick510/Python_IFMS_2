@@ -129,6 +129,8 @@ def ex16():
       start += 1
   print(contando_ocorrencias(s1,s2))
 
+ex16()
+
 # 17 - Um palíndromo é uma sequência de caracteres que se lê da mesma forma que de trás para frente, como ARARA, REVIVER ou OGALOAMAOLAGO. Dada uma string, ela é palíndroma?.
 def ex17():
   pass
