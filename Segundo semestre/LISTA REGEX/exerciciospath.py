@@ -27,3 +27,27 @@ def ex1():
         print("Ação inválida. Por favor, escolha 'excluir', 'copiar' ou 'mover'.")
 
 ex1()
+
+#from pathlib import Path
+
+def listar_arquivos_e_diretorios(caminho):
+    caminho_pasta = Path(caminho)
+    if caminho_pasta.is_dir():
+        arquivos = [item.name for item in caminho_pasta.iterdir() if item.is_file()]
+        diretorios = [item.name for item in caminho_pasta.iterdir() if item.is_dir()]
+        return {'arquivos': arquivos, 'diretorios': diretorios}
+    else:
+        return 'O caminho fornecido não é um diretório válido.'
+
+# Exemplo de uso
+caminho = input()
+resultado = listar_arquivos_e_diretorios(caminho)
+
+print("Arquivos:")
+for arquivo in resultado.get('arquivos', []):
+    print(arquivo)
+
+print("\nDiretórios:")
+for diretorio in resultado.get('diretorios', []):
+    print(diretorio)
+
