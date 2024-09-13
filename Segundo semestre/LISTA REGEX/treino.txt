@@ -1,0 +1,56 @@
+Exercício 1: Validar Endereços de E-mail
+Descrição: Receber uma string e verificar se ela é um endereço de e-mail válido. Considere um e-mail válido como tendo a forma local@domain.com, onde:
+
+local pode conter letras, números, pontos e sublinhados.
+domain pode conter letras e números.
+O domínio pode ter um subdomínio separado por um ponto.
+Exemplo de Entrada e Saída:
+
+Entrada: example.email@test.com
+
+Saída: True
+
+Entrada: invalid-email@.com
+
+Saída: False
+
+Exercício 2: Extrair Números de Telefone
+Descrição: Receber uma string e extrair todos os números de telefone no formato (XX) XXXX-XXXX. O formato é:
+
+(XX): Código de área com dois dígitos entre parênteses.
+XXXX-XXXX: Número de telefone com quatro dígitos, seguido por um hífen e mais quatro dígitos.
+Exemplo de Entrada e Saída:
+
+Entrada: Ligue para (21) 1234-5678 ou (11) 9876-5432.
+Saída: ['(21) 1234-5678', '(11) 9876-5432']
+
+
+Exercício 3: Encontrar Palavras com Mais de 5 Letras
+Descrição: Receber uma string e retornar uma lista com todas as palavras que têm mais de 5 letras. Considere palavras separadas por espaços e sinais de pontuação.
+
+Exemplo de Entrada e Saída:
+
+Entrada: A rápida raposa marrom pula sobre o cachorro preguiçoso.
+Saída: ['rápida', 'raposa', 'marrom', 'cachorro', 'preguiçoso']
+
+
+Exercício 4: Validar Códigos Postais
+Descrição: Receber uma string e verificar se ela é um código postal válido no formato XXXXX-XXX, onde X é um dígito. O código postal deve ser exatamente 8 dígitos, com um hífen no meio.
+
+Exemplo de Entrada e Saída:
+
+Entrada: 12345-678
+
+Saída: True
+
+Entrada: 1234-5678
+
+Saída: False
+
+Exercício 5: Extrair Data no Formato DD/MM/AAAA
+Descrição: Receber uma string e extrair todas as datas no formato DD/MM/AAAA. Considere que o dia deve estar entre 01 e 31, o mês entre 01 e 12 e o ano pode ser qualquer ano de quatro dígitos.
+
+Exemplo de Entrada e Saída:
+
+Entrada: Os eventos são em 01/01/2024 e 25/12/2023.
+Saída: ['01/01/2024', '25/12/2023']
