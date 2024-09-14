@@ -1,23 +1,34 @@
 import re
 
 # 1 - Na língua portuguesa, palavras no plural terminam com “s”. Receber uma string e retornar uma lista com as palavras que terminam com “s”.
-
+def ex1(string):
+    pattern = r'\b\w+s\b'
+    return re.findall(pattern, string)
 #print(ex1("Os gatos e cachorros estão felizes."))
 
 # 2 - Receber uma string e retornar uma lista com as palavras que contém duas letras repetidas consecutivas, como “correr” ou “assado”.
-
+def ex2(string):
+    pattern = r'\b\w*(\w)\1\w*\b'
+    words = set(match.group(0) for match in re.finditer(pattern, string))
+    return words
 #print(ex2("Os gatos e cachorros estão correndo felizes"))
 
 # 3 - Receber uma string com várias linhas e retornar uma lista com todas as datas no formato dd/mm/aaaa.
-
+def ex3(string):
+    pattern = r'\b\d{2}/\d{2}/\d{4}\b'
+    return re.findall(pattern,string)
 #print(ex3("Hoje é 01/01/2021 e amanhã será 02/01/2021."))
 
 # 4 - Receber uma string e retornar True caso seja um horário no formato “HH:MM” válido, ou False caso contrário. Usar apenas uma expressão regular que faça a validação completa.
-
+def ex4(string):
+    pattern = r'(0[0-9]|1[1-2]):[0-5][0-9]'
+    return re.findall(pattern, string) != []
 #print(ex4("O horário é 12:00."))
 
 # 5 - Receber uma string, que representa uma URL, e retornar um dicionário com as variáveis e seus valores extraídos da URL, ambas como string. Por exemplo, para a URL https://www.exemplo.com/produto?id=123&nome=produto1&categoria=eletronicos, a função deve retornar o dicionário {"id":"123", "nome":"produto1", "categoria":"eletronicos"}.
-
+def ex5(string):
+    pattern = r'(?<=\?|&)(\w+)=(\w+)'
+    return {key: value for key, value in re.findall(pattern,string)}
 #print(ex5("https://www.exemplo.com/produto?id=123&nome=produto1&categoria=eletronicos"))
 
 # 6 - Receber uma string contendo informações sobre filmes e retornar uma lista apenas com os títulos dos filmes produzidos antes de 1990. Exemplo, para a string:
